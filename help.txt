@@ -1,0 +1,11 @@
+About:
+  Print speed test. The user drops out a text or a set of words that he must correctly press on the keyboard.
+
+Parameters:				Values:					        Description:
+
+  <level>               "easy" / "medium" / "hard"                          Game difficulty level.
+  <time_limit>          5-180						    Time limit.
+  <max_errors>          1-30						    Maximum number of errors.
+
+Restart the program.
+Enjoy!
