@@ -23,7 +23,16 @@ void print_page(int current_page, Page *pages) {
     int i, j;
     for (i = 0; i < HEIGHT; ++i) {
         for (j = 0; j < WIDTH && pages[current_page].text[i][j].value != '\0'; ++j) {
-            printf("%c", pages[current_page].text[i][j].value);
+            // Дефолтный цвет
+            if (pages[current_page].text[i][j].color == 0)
+                printf("%c", pages[current_page].text[i][j].value);
+            // Зеленый цвет
+            if (pages[current_page].text[i][j].color == 1)
+
+                printf("%c", pages[current_page].text[i][j].value);
+            // Красный цвет
+            if (pages[current_page].text[i][j].color == 2)
+                printf("%c", pages[current_page].text[i][j].value);
         }
         printf("\n");
         if (pages[current_page].text[i][j].value != '\0') return ;

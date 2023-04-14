@@ -7,6 +7,7 @@
 #include "gameloop.h"
 
 int main(int argc, char *argv[]) {
+
     int time_limit, max_errors; // Переменные для лимита времени и лимита ошибок
     char character; // Переменная, куда записывается символ, используется при чтении файлов, записи текста в структуру страницы
 

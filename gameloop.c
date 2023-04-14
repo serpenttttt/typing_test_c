@@ -7,7 +7,9 @@
 #include <stdio.h>
 
 void gameloop(int amount_of_pages, int time_limit, int max_errors, Page *pages) {
-    int count_errors = 0;
+    // Для статистики
+    int count_errors = 0, correct_characters = 0, words = 1; // Слово изначально 1, тк при завершении не получится ввести пробел
+
     int current_page = 0;
     int button;
 
@@ -17,11 +19,32 @@ void gameloop(int amount_of_pages, int time_limit, int max_errors, Page *pages) 
     start = clock();
     now = start;
     print_page(current_page, pages);
-    while ((time_limit > (now - start) / CLK_TCK) && count_errors <= max_errors && current_page < amount_of_pages) {
+    int i = 0, j = 0;
+    while ((time_limit > (now - start) / CLK_TCK) && count_errors <= max_errors && current_page < amount_of_pages &&
+        pages[current_page].text[i][j].value != '\0') {
         if (kbhit()) {
             button = getch();
+            if (j == WIDTH) {
+                if(i + 1 == HEIGHT) {
+                    current_page += 1;
+                    i = 0;
+                } else
+                    i += 1;
+                j = 0;
+            }
+            if (button == pages[current_page].text[i][j].value) {
+                pages[current_page].text[i][j].color = 1; // 1 - зеленый
+                if (button == ' ')
+                    words += 1;
+                correct_characters += 1;
+            } else {
+                pages[current_page].text[i][j].color = 2; // 2 - красный
+                count_errors += 1;
+            }
             system("cls");
             print_page(current_page, pages);
+
+            j += 1;
         }
         else now = clock();
     }
