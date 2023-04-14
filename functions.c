@@ -46,3 +46,14 @@ void print_page(int current_page, Page *pages, HANDLE hConsole) {
         if (i + 1 == HEIGHT && pages[current_page].text[i][j].value != '\0') return ;
     }
 }
+
+void show_res(int correct_characters, int incorrect_characters, int words, double time) {
+    system("cls");
+    printf("\n- You've entered %d correct symbols\n", correct_characters);
+    printf("\n- You've entered %d incorrect symbols\n", incorrect_characters);
+    printf("\n- You've entered %d symbols\n", correct_characters + incorrect_characters);
+
+    //Добавить отсчет времени
+    printf("\n- Your average speed is %d symbols per minute\n", (correct_characters + incorrect_characters)/time*60);
+    printf("\n- Your average speed is %d words per minute\n", words/time*60);
+}

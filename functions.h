@@ -12,4 +12,6 @@ Page *create_page(int page_number, Page *pages);
 
 void print_page(int current_page, Page *pages, HANDLE hConsole);
 
+void show_res(int correct_characters, int incorrect_characters, int words, double time);
+
 #endif //RK1_FUNCTIONS_H

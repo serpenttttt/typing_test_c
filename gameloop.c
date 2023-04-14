@@ -48,6 +48,6 @@ void gameloop(int amount_of_pages, int time_limit, int max_errors, Page *pages, 
         }
         else now = clock();
     }
-
-
+    double test_time = (now - start) / CLK_TCK;
+    show_res(correct_characters, count_errors, words, test_time);
 }
