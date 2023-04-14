@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-void gameloop(int amount_of_pages, int time_limit, int max_errors, Page *pages) {
+void gameloop(int amount_of_pages, int time_limit, int max_errors, Page *pages, HANDLE hConsole) {
     // Для статистики
     int count_errors = 0, correct_characters = 0, words = 1; // Слово изначально 1, тк при завершении не получится ввести пробел
 
@@ -18,7 +18,7 @@ void gameloop(int amount_of_pages, int time_limit, int max_errors, Page *pages) 
     // Считываем текущее время
     start = clock();
     now = start;
-    print_page(current_page, pages);
+    print_page(current_page, pages, hConsole);
     int i = 0, j = 0;
     while ((time_limit > (now - start) / CLK_TCK) && count_errors <= max_errors && current_page < amount_of_pages &&
         pages[current_page].text[i][j].value != '\0') {
@@ -42,7 +42,7 @@ void gameloop(int amount_of_pages, int time_limit, int max_errors, Page *pages) 
                 count_errors += 1;
             }
             system("cls");
-            print_page(current_page, pages);
+            print_page(current_page, pages, hConsole);
 
             j += 1;
         }

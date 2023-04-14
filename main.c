@@ -5,8 +5,11 @@
 #include "functions.h"
 #include "struct.h"
 #include "gameloop.h"
+#include <windows.h>
 
 int main(int argc, char *argv[]) {
+
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); // Получение дескриптора стандартного вывода
 
     int time_limit, max_errors; // Переменные для лимита времени и лимита ошибок
     char character; // Переменная, куда записывается символ, используется при чтении файлов, записи текста в структуру страницы
@@ -58,7 +61,7 @@ int main(int argc, char *argv[]) {
 
     // закрытие файла
     fclose(file_with_text);
-    gameloop(amount_of_pages, time_limit, max_errors, pages);
+    gameloop(amount_of_pages, time_limit, max_errors, pages, hConsole);
 
     //show_res();
 
