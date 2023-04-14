@@ -1,4 +1,4 @@
-#include <stdio.h> // level max_time max_errors
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>

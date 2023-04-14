@@ -1,5 +1,5 @@
 About:
-  Print speed test. The user drops out a text or a set of words that he must correctly press on the keyboard.
+  This is a typing speed test. The user is shown a text or a set of words that he must type correctly.
 
 Parameters:				Values:					        Description:
 

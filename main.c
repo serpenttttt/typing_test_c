@@ -2,18 +2,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "validate_params.h"
-#include <time.h>
+// #include <time.h>
 #include "functions.h"
 #include "struct.h"
-
-#define HEIGHT 5
-#define WIDTH 45
-
+#include "gameloop.h"
 
 int main(int argc, char *argv[]) {
-    int time_limit, max_errors;
-    char character;
+    int time_limit, max_errors; // Переменные для лимита времени и лимита ошибок
+    char character; // Переменная, куда записывается символ, используется при чтении файлов, записи текста в структуру страницы
 
+    // Проверка параметров, которые были переданы в программу.
     if (!validate_params(argc, argv)) {
         FILE *help;
         help = fopen("help.txt", "r");
@@ -24,48 +22,59 @@ int main(int argc, char *argv[]) {
         return -1;
     }
 
+    // Запись переданных значений после их проверки
     time_limit = atoi(argv[2]);
     max_errors = atoi(argv[3]);
 
-    // создаём указатель на файл и открываем его
+    // Создаём указатель на файл и открываем его
     FILE *file_with_text;
     file_with_text = fopen(select_file(argv[1]), "r");
 
-    Element *text[HEIGHT][WIDTH];
+    // Создаем указатель на динамический массив из типа данных Page, пока что там будет 1 страница. (До того момента, пока она не заполнится)
+    Page *pages = init_pages();
 
-    // перезапись в структуру
-    character = getc(file_with_text);
-    for (int k = 0; character != '\0'; ++k) {
+    // Перезаписываем в структуру
+    character = ' '; //
+    int i, j, amount_of_pages = 1;
+    for (int page_number = 0; character != EOF; ++page_number) {
 
-        for (int i = 0; i < HEIGHT || character != '\0'; ++i) {
-            for (int j = 0; j < WIDTH || character != '\0'; ++j) {
-                puts()
+        for (i = 0; i < HEIGHT && character != EOF; ++i) {
+            for (j = 0; j < WIDTH && (character = getc(file_with_text)) != EOF; ++j) {
+                pages[page_number].text[i][j].value = character;
+                printf("\n%c\n", pages[page_number].text[i][j].value);
+                pages[page_number].text[i][j].color = 0;   // 0 -- дефолтный цвет
             }
-
         }
 
+        // Создаем новую страничку
+        if ((i + 1) >= HEIGHT && character != '\0') {
+            pages = create_page(page_number, pages);
+            amount_of_pages = amount_of_pages + 1;
+        }
     }
-
-    // заполняем массив, проверяем конец строки, но новую, если строки закончились, то добавляем страницу
 
     // закрытие файла
     fclose(file_with_text);
+    puts("here we go");
+    gameloop(amount_of_pages, time_limit, max_errors);
+
+    //show_res();
+
+    // статистика
+    //show_stats();
 
 
-    int count_errors = 0;
+    /*int count_errors = 0;
 
-    long int start;
-    long int now;
+    long int start, now;
 
     // Считываем текущее время
     start = (int) time (NULL);
-    now = (int) time (NULL);
+    now = start;*/
 
-    while ((time_limit > now - start) && count_errors <= max_errors) {
+    /*while ((time_limit > now - start) && count_errors <= max_errors) {
         now = (int) time (NULL);
-    }
-
-    // статистика
+    }*/
 
     return 0;
 }
