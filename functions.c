@@ -33,14 +33,16 @@ void print_page(int current_page, Page *pages, HANDLE hConsole) {
             if (pages[current_page].text[i][j].color == 1) {
                 SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
                 printf("%c", pages[current_page].text[i][j].value);
+                SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE);
             }
             // Красный цвет
             if (pages[current_page].text[i][j].color == 2){
                 SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
                 printf("%c", pages[current_page].text[i][j].value);
+                SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE);
             }
         }
         printf("\n");
-        if (pages[current_page].text[i][j].value != '\0') return ;
+        if (i + 1 == HEIGHT && pages[current_page].text[i][j].value != '\0') return ;
     }
 }

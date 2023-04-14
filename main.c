@@ -8,6 +8,7 @@
 #include <windows.h>
 
 int main(int argc, char *argv[]) {
+    system("cls");
 
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); // Получение дескриптора стандартного вывода
 
@@ -61,6 +62,7 @@ int main(int argc, char *argv[]) {
 
     // закрытие файла
     fclose(file_with_text);
+
     gameloop(amount_of_pages, time_limit, max_errors, pages, hConsole);
 
     //show_res();
