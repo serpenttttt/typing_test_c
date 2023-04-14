@@ -21,10 +21,11 @@ Page *create_page(int page_number, Page *pages) {
 
 void print_page(int current_page, Page *pages) {
     int i, j;
-    for (i = 0; i < HEIGHT && pages[current_page].text[i][j].value != '\0'; ++i) {
+    for (i = 0; i < HEIGHT; ++i) {
         for (j = 0; j < WIDTH && pages[current_page].text[i][j].value != '\0'; ++j) {
             printf("%c", pages[current_page].text[i][j].value);
         }
         printf("\n");
+        if (pages[current_page].text[i][j].value != '\0') return ;
     }
 }

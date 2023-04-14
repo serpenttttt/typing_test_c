@@ -57,7 +57,6 @@ int main(int argc, char *argv[]) {
 
     // закрытие файла
     fclose(file_with_text);
-    //puts("d");
     gameloop(amount_of_pages, time_limit, max_errors, pages);
 
     //show_res();
