@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "struct.h"
+#include <stdio.h>
 
 char *select_file(char *level) {
     strcat(level, ".txt");
@@ -18,6 +19,12 @@ Page *create_page(int page_number, Page *pages) {
     return pages;
 }
 
-void print_page(int current_page) {
-
+void print_page(int current_page, Page *pages) {
+    int i, j;
+    for (i = 0; i < HEIGHT && pages[current_page].text[i][j].value != '\0'; ++i) {
+        for (j = 0; j < WIDTH && pages[current_page].text[i][j].value != '\0'; ++j) {
+            printf("%c", pages[current_page].text[i][j].value);
+        }
+        printf("\n");
+    }
 }

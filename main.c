@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "validate_params.h"
-// #include <time.h>
 #include "functions.h"
 #include "struct.h"
 #include "gameloop.h"
@@ -41,8 +40,11 @@ int main(int argc, char *argv[]) {
         for (i = 0; i < HEIGHT && character != EOF; ++i) {
             for (j = 0; j < WIDTH && (character = getc(file_with_text)) != EOF; ++j) {
                 pages[page_number].text[i][j].value = character;
-                printf("\n%c\n", pages[page_number].text[i][j].value);
                 pages[page_number].text[i][j].color = 0;   // 0 -- дефолтный цвет
+            }
+            if (character == EOF) {
+                if (j < WIDTH) pages[page_number].text[i][j].value = '\0';
+                else if ((i + 1) < HEIGHT) pages[page_number].text[i + 1][0].value = '\0';
             }
         }
 
@@ -55,26 +57,13 @@ int main(int argc, char *argv[]) {
 
     // закрытие файла
     fclose(file_with_text);
-    puts("here we go");
-    gameloop(amount_of_pages, time_limit, max_errors);
+    //puts("d");
+    gameloop(amount_of_pages, time_limit, max_errors, pages);
 
     //show_res();
 
     // статистика
     //show_stats();
-
-
-    /*int count_errors = 0;
-
-    long int start, now;
-
-    // Считываем текущее время
-    start = (int) time (NULL);
-    now = start;*/
-
-    /*while ((time_limit > now - start) && count_errors <= max_errors) {
-        now = (int) time (NULL);
-    }*/
 
     return 0;
 }

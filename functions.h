@@ -9,6 +9,6 @@ Page *init_pages();
 
 Page *create_page(int page_number, Page *pages);
 
-void print_page(int current_page);
+void print_page(int current_page, Page *pages);
 
 #endif //RK1_FUNCTIONS_H
