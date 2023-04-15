@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "functions.h"
 
+
 char *select_file(char *level) {
     strcat(level, ".txt");
     return level;
@@ -52,8 +53,6 @@ void show_res(int correct_characters, int incorrect_characters, int words, doubl
     printf("\n- You've entered %d correct symbols\n", correct_characters);
     printf("\n- You've entered %d incorrect symbols\n", incorrect_characters);
     printf("\n- You've entered %d symbols\n", correct_characters + incorrect_characters);
-
-    //Добавить отсчет времени
-    printf("\n- Your average speed is %d symbols per minute\n", (correct_characters + incorrect_characters)/time*60);
-    printf("\n- Your average speed is %d words per minute\n", words/time*60);
+    printf("\n- Your average speed is %f symbols per minute\n", ((correct_characters + incorrect_characters) / time) * 60000);
+    printf("\n- Your average speed is %f words per minute\n", (words / time) * 60000);
 }
