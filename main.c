@@ -1,6 +1,4 @@
 // .\cmake-build-debug\rk1.exe easy 6 10
-#include <stdio.h>
-#include <stdlib.h>
 #include "validate_params.h"
 #include "functions.h"
 #include "struct.h"
@@ -17,7 +15,7 @@ int main(int argc, char *argv[]) {
     char character; // Переменная, куда записывается символ, используется при чтении файлов, записи текста в структуру страницы
 
     // Проверка параметров, которые были переданы в программу. В случае непрохождения - ошибка и вывод help из файла help.txt
-    if (!validate_params(argc, argv)) {
+    if (!validate_params(argv)) {
         FILE *help;
         help = fopen("help.txt", "r");
         while ((character = getc(help)) != EOF) {

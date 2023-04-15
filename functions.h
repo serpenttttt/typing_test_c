@@ -3,6 +3,9 @@
 
 #include "struct.h"
 #include <windows.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 
 char *select_file(char *level);
 

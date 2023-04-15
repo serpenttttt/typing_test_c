@@ -6,15 +6,14 @@
 - windows.h
 - cmake
 ```
-# Building the Project with CMake
 
-## Cloning the Repository
+## Clone the Repository
 
 Before start clone the repository to your local computer
 
-``` git clone https://github.com/serpenttttt/typing_test_c.git```
+```git clone https://github.com/serpenttttt/typing_test_c.git```
 
-## Building the Project with CMake
+## Build the Project with CMake
 1. Navigate to the root directory of the project:
    ```cd typing_test_c```
 2. Create a "build" directory:
@@ -27,5 +26,6 @@ Before start clone the repository to your local computer
    ```cmake --build .```
 6. It works
 
-# Command to start: 
+## Command to start: 
 ```.\cmake-build-debug\rk1.exe easy 10 10```
+#### You can add your text into the file hard.txt

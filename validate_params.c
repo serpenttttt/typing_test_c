@@ -1,9 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <string.h>
+#include "validate_params.h"
 
-bool validate_params(int argc, char **argv) {
+bool validate_params(char **argv) {
     if (strcmp(argv[1], "easy") == 0 || strcmp(argv[1], "medium") == 0 || strcmp(argv[1], "hard") == 0) {
         if (4 < atoi(argv[2]) && atoi(argv[2]) < 181) {
             if (!(0 < atoi(argv[3]) && atoi(argv[3]) < 31)){

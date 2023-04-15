@@ -1,9 +1,4 @@
-#include <stdlib.h>
-#include <string.h>
-#include "struct.h"
-#include <stdio.h>
 #include "functions.h"
-
 
 char *select_file(char *level) {
     strcat(level, ".txt");
