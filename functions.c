@@ -21,14 +21,19 @@ Page *create_page(int page_number, Page *pages) {
     return pages;
 }
 
-void print_page(int current_page, Page *pages, HANDLE hConsole) {
+void print_page(int current_page, Page *pages, HANDLE hConsole, int x, int y) {
     int i, j;
+
     for (i = 0; i < HEIGHT; ++i) {
         for (j = 0; j < WIDTH && pages[current_page].text[i][j].value != '\0'; ++j) {
+
             // Дефолтный цвет
             if (pages[current_page].text[i][j].color == 0) {
                 SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE);
+
+                if (i == x && j == y) SetConsoleTextAttribute(hConsole, BACKGROUND_BLUE);
                 printf("%c", pages[current_page].text[i][j].value);
+                SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE);
             }
             // Зеленый цвет
             if (pages[current_page].text[i][j].color == 1) {

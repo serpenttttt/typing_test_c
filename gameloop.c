@@ -4,11 +4,9 @@
 #include "functions.h"
 #include <stdlib.h>
 
-#include <stdio.h>
-
 void gameloop(int amount_of_pages, int time_limit, int max_errors, Page *pages, HANDLE hConsole) {
     // Для статистики
-    int count_errors = 0, correct_characters = 0, words = 1; // Слово изначально 1, тк при завершении не получится ввести пробел
+    int count_errors = 0, correct_characters = 0, words = 0;
 
     int current_page = 0;
     int button;
@@ -18,8 +16,8 @@ void gameloop(int amount_of_pages, int time_limit, int max_errors, Page *pages, 
     // Считываем текущее время
     start = clock();
     now = start;
-    print_page(current_page, pages, hConsole);
     int i = 0, j = 0;
+    print_page(current_page, pages, hConsole, i, j);
     while ((time_limit > (now - start) / CLK_TCK) && count_errors <= max_errors && current_page < amount_of_pages &&
         pages[current_page].text[i][j].value != '\0') {
         if (kbhit()) {
@@ -42,9 +40,10 @@ void gameloop(int amount_of_pages, int time_limit, int max_errors, Page *pages, 
                 count_errors += 1;
             }
             system("cls");
-            print_page(current_page, pages, hConsole);
 
             j += 1;
+
+            print_page(current_page, pages, hConsole, i, j);
         }
         else now = clock();
     }

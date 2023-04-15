@@ -10,7 +10,7 @@ Page *init_pages();
 
 Page *create_page(int page_number, Page *pages);
 
-void print_page(int current_page, Page *pages, HANDLE hConsole);
+void print_page(int current_page, Page *pages, HANDLE hConsole, int x, int y);
 
 void show_res(int correct_characters, int incorrect_characters, int words, double time);
 
