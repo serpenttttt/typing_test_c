@@ -11,6 +11,7 @@ int main(int argc, char *argv[]) {
     system("cls");
 
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); // Получение дескриптора стандартного вывода
+    SetConsoleCursorInfo(hConsole, &(CONSOLE_CURSOR_INFO) {100, 0});
 
     int time_limit, max_errors; // Переменные для лимита времени и лимита ошибок
     char character; // Переменная, куда записывается символ, используется при чтении файлов, записи текста в структуру страницы
