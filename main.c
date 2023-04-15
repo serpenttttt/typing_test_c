@@ -65,10 +65,5 @@ int main(int argc, char *argv[]) {
 
     gameloop(amount_of_pages, time_limit, max_errors, pages, hConsole);
 
-    //show_res();
-
-    // статистика
-    //show_stats();
-
     return 0;
 }
